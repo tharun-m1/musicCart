@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* .container {
+} */
+.caption {
+  display: flex;
+  gap: 5px;
+  letter-spacing: 0.3px;
+  padding: 5px 0px;
+}
+.caption > div:first-child {
+  font-family: Roboto Bold;
+  font-size: 1.1rem;
+}
+.caption > div:last-child {
+  font-size: 0.8rem;
+  align-self: flex-end;
+  font-family: Roboto Medium;
+}
+form {
+  margin-top: 20px;
+}
+.feild {
+  margin-top: 10px;
+}
+.feild > div:first-child {
+  font-family: Roboto Medium;
+}
+.feild > div:last-child {
+  margin-top: 5px;
+}
+.feild > div:last-child input {
+  width: 100%;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+}
+.submitBtn {
+  /* border: 1px solid red; */
+  margin-top: 10px;
+}
+.submitBtn button {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 8px 0px;
+  background-color: #2e0052;
+  color: white;
+  font-family: Roboto Bold;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.info {
+  font-family: Roboto Bold;
+  font-size: 0.8rem;
+  padding: 8px 3px;
+  text-align: left;
+}
+.tnc {
+  font-family: Roboto Medium;
+  font-size: 0.8rem;
+  padding: 8px 3px;
+  text-align: left;
+  margin-top: 1vh;
+}
+
+@media screen and (min-width: 600px) {
+  .caption > div:last-child {
+    display: none;
+  }
+  .caption > div:first-child {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .caption > div:first-child {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 992px) {
+}
+@media screen and (min-width: 1200px) {
+}

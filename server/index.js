@@ -6,6 +6,7 @@ require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const feedbackRoute = require("./routes/feedback");
 const cartRoutes = require("./routes/cartRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ app.get("/health", (req, res) => {
 app.use("/", authRoutes);
 app.use("/", feedbackRoute);
 app.use("/", cartRoutes);
+app.use("/", productRoutes);
 // ====================Error Handler===============================
 app.use((err, req, res, next) => {
   const status = err.status || 500;
@@ -36,7 +38,7 @@ app.use((err, req, res, next) => {
 app.listen(process.env.PORT, () => {
   mongoose
     .connect(process.env.MONGODB_URL)
-    .then(() => {
+    .then((res) => {
       console.log(`server running at http://localhost:${process.env.PORT}`);
     })
     .catch((err) => {
