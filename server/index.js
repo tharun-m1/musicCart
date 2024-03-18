@@ -5,7 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const feedbackRoute = require("./routes/feedback");
-const userRoutes = require("./routes/cartRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
 app.use(cors());
@@ -22,7 +22,7 @@ app.get("/health", (req, res) => {
 // ===================== routes ===================================
 app.use("/", authRoutes);
 app.use("/", feedbackRoute);
-app.use("/", userRoutes);
+app.use("/", cartRoutes);
 // ====================Error Handler===============================
 app.use((err, req, res, next) => {
   const status = err.status || 500;
