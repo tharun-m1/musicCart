@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  /* border: 1px solid red; */
+  height: 100%;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+.container > div {
+  /* border: 1px solid blue; */
+  padding: 0px 10px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.active {
+  border-top: 3px solid #2e0052;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  font-family: Roboto Bold;
+}
+.icon img {
+  width: 25px;
+}
+.cartSize {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2dad00;
+  font-family: Roboto Bold;
+  position: absolute;
+  transform: translateY(-120%) translateX(70%);
+}

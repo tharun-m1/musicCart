@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./auth.module.css";
 import logo from "../../assets/logo.svg";
 import Form from "../../components/Form/Form";
+import { useDispatch, useSelector } from "react-redux";
+import { changeFormStatus } from "../../redux/formStatus";
 
 function Auth() {
   // eslint-disable-next-line
-  const [formStatus, setFormStatus] = useState("signup");
+  // const [formStatus, setFormStatus] = useState("login");
+  const formStatus = useSelector((state) => state.formStatus.value);
+  const dispatch = useDispatch();
   return (
     <>
       <div className={styles.container}>
@@ -22,7 +26,9 @@ function Auth() {
         {formStatus === "signup" ? (
           <div className={styles.nav}>
             Already have an account?{" "}
-            <span onClick={() => setFormStatus("login")}>Sign in</span>
+            <span onClick={() => dispatch(changeFormStatus("login"))}>
+              Sign in
+            </span>
           </div>
         ) : (
           ""
@@ -38,7 +44,7 @@ function Auth() {
         )}
         {formStatus === "login" ? (
           <div className={styles.btnContainer}>
-            <button onClick={() => setFormStatus("signup")}>
+            <button onClick={() => dispatch(changeFormStatus("signup"))}>
               Create your Musicart account
             </button>
           </div>

@@ -1,14 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styles from "./form.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login, register } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { useDispatch } from "react-redux";
+import { changeStatus } from "../../redux/loginSlice";
 function Form({ formStatus }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const ref = useRef();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
@@ -64,6 +66,7 @@ function Form({ formStatus }) {
         setLoading(true);
         const response = await register(payload);
         localStorage.setItem("mic_jwToken", response.data.jwToken);
+        dispatch(changeStatus(true));
         return navigate("/");
       }
       if (formStatus === "login") {
@@ -72,6 +75,7 @@ function Form({ formStatus }) {
         setLoading(true);
         const response = await login(payload);
         localStorage.setItem("mic_jwToken", response.data.jwToken);
+        dispatch(changeStatus(true));
         return navigate("/");
       }
     } catch (err) {
@@ -81,7 +85,7 @@ function Form({ formStatus }) {
   };
   return (
     <>
-      <div ref={ref} className={styles.container}>
+      <div className={styles.container}>
         <ToastContainer />
         {loading ? <Loading /> : ""}
         <div className={styles.caption}>{getCaption()}</div>

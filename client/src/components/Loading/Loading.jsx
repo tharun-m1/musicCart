@@ -1,24 +1,9 @@
 import React from "react";
-
+import styles from "./loading.module.css";
 function Loading() {
   return (
-    <div
-      style={{
-        height: "99.99dvh",
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "100vw",
-        zIndex: "2",
-        background: "rgba(0, 0, 0, 0.8)",
-        color: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "3rem",
-      }}
-    >
-      Loading...
+    <div className={styles.container}>
+      <div className={styles.box}></div>
     </div>
   );
 }

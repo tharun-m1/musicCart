@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  /* border: 1px solid red; */
+  width: 95%;
+  margin: auto;
+  padding: 15px 0px;
+}
+@font-face {
+  font-family: Roboto Regular;
+  src: url("../../assets/Fonts/Roboto/Roboto-Regular.ttf");
+}
+.backBtnCont img {
+  width: 50px;
+}
+.backBtnCont button {
+  background-color: #2e0052;
+  color: white;
+  font-family: Roboto Bold;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border: none;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.buyBtn {
+  margin-top: 10px;
+  width: 95%;
+}
+.buyBtn button {
+  width: 100%;
+  background-color: #ffb800;
+  border: none;
+  font-family: Roboto Medium;
+  font-size: 1rem;
+  line-height: 2.5;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.details {
+  /* border: 1px solid red; */
+  padding-bottom: 100px;
+}
+.carousel {
+  max-width: 400px;
+}
+.productName {
+  font-family: Roboto Bold;
+  font-size: 1.5rem;
+  line-height: 2.5;
+}
+.rating,
+.price,
+.colNtyp,
+.about,
+.available,
+.brand,
+.overview {
+  font-family: Roboto Regular;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 5px 10px;
+}
+
+.about > div:last-child {
+  margin-left: 30px;
+}
+.about > div:last-child ul li {
+  text-align: left;
+  margin-top: 15px;
+}
+.star {
+  width: 1rem;
+  padding: 2px;
+}
+@media screen and (min-width: 600px) {
+  .productHeader {
+    font-family: Roboto Bold;
+    font-size: 1.1rem;
+    margin-top: 20px;
+  }
+  .details {
+    display: flex;
+    /* border: 1px solid red; */
+    align-items: flex-start;
+  }
+  .left {
+    flex: 35%;
+    /* border: 1px solid red; */
+    flex-shrink: 0;
+  }
+  .right {
+    /* border: 1px solid red; */
+    flex: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+    margin: auto;
+    flex-grow: 1;
+  }
+  .productName {
+    font-size: 1.2rem;
+  }
+  .carousel {
+    /* border: 2px solid green; */
+    max-width: 400px;
+  }
+  .right {
+    padding: 20px;
+  }
+  .rating,
+  .price,
+  .colNtyp,
+  .about,
+  .available,
+  .brand,
+  .overview {
+    font-size: 0.8rem;
+    line-height: 1.1;
+    padding: 5px 10px;
+    font-family: Roboto Medium;
+  }
+  .overview {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .carousel {
+    max-width: 450px;
+  }
+  .buyBtn {
+    width: 50%;
+  }
+  .price {
+    font-size: 1rem;
+  }
+  .colNtyp {
+    font-size: 1rem;
+  }
+  .available {
+    font-size: 1rem;
+  }
+  .brand {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .buyBtn {
+    width: 35%;
+  }
+  .productHeader {
+    font-size: 1.2rem;
+  }
+  .about {
+    font-size: 0.85rem;
+  }
+}
