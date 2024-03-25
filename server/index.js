@@ -7,6 +7,7 @@ const authRoutes = require("./routes/auth");
 const feedbackRoute = require("./routes/feedback");
 const cartRoutes = require("./routes/cartRoutes");
 const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 app.use(cors());
@@ -25,6 +26,7 @@ app.use("/", authRoutes);
 app.use("/", feedbackRoute);
 app.use("/", cartRoutes);
 app.use("/", productRoutes);
+app.use("/", userRoutes);
 // ====================Error Handler===============================
 app.use((err, req, res, next) => {
   const status = err.status || 500;
