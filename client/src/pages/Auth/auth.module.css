@@ -13,7 +13,8 @@
 }
 .container {
   /* border: 5px solid red; */
-  height: 100dvh;
+  /* height: 100dvh; */
+  padding-bottom: 100px;
   min-width: 360px;
   display: flex;
   flex-direction: column;

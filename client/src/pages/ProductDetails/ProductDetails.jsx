@@ -5,26 +5,29 @@ import useScreenSize from "../../customHooks/useScreenSize";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { changeFormStatus } from "../../redux/formStatus";
-import { getProduct } from "../../api/products";
+import { addToCart, getProduct } from "../../api/products";
 import { ToastContainer, toast } from "react-toastify";
 import Carousel from "../../components/Carousel/Carousel";
 import Loading from "../../components/Loading/Loading";
 import star from "../../assets/star.svg";
+import { updateCart } from "../../redux/cartSlice";
+import { changeStatus } from "../../redux/loginSlice";
 
 function ProductDetails() {
   const [productData, setProductData] = useState([]);
   const [stars, setStars] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [adding, setAdding] = useState(false);
   const screenSize = useScreenSize();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleBuyNow = () => {
-    const jwToken = localStorage.getItem("mic_jwToken");
-    if (!jwToken) {
-      dispatch(changeFormStatus("login"));
-      navigate("/auth");
-    }
-  };
+  // const handleBuyNow = () => {
+  //   const jwToken = localStorage.getItem("mic_jwToken");
+  //   if (!jwToken) {
+  //     dispatch(changeFormStatus("login"));
+  //     navigate("/auth");
+  //   }
+  // };
   const { productId } = useParams();
   const handleStars = (rating) => {
     let ans;
@@ -51,7 +54,7 @@ function ProductDetails() {
         setLoading(false);
         if (response.data.data.rating) {
           const st = handleStars(response.data.data.rating);
-          console.log(st);
+          // console.log(st);
           setStars(st);
         }
       } catch (err) {
@@ -63,6 +66,35 @@ function ProductDetails() {
 
     // eslint-disable-next-line
   }, []);
+  const handleAddToCart = async () => {
+    try {
+      const jwToken = localStorage.getItem("mic_jwToken");
+      if (!jwToken) {
+        dispatch(changeFormStatus("login"));
+        navigate("/auth");
+      }
+      setAdding(true);
+      const response = await addToCart(null, productId);
+      // toast.success("Item added to cart");
+      dispatch(updateCart(response.data.data));
+      setAdding(false);
+      navigate("/cart");
+    } catch (err) {
+      setAdding(false);
+      console.log("status code", err.status);
+      if (err.status === 500) {
+        console.log("500 executed");
+        localStorage.removeItem("mic_jwToken");
+        dispatch(changeFormStatus("login"));
+        dispatch(changeStatus(false));
+        return navigate("/auth");
+      }
+      if (err.status === 412) {
+        return toast.error(err.message);
+      }
+      return toast.error("Something went wrong try again.");
+    }
+  };
   return (
     <>
       <div className={styles.container}>
@@ -70,14 +102,14 @@ function ProductDetails() {
         {loading ? <Loading /> : ""}
         <div className={styles.backBtnCont}>
           {screenSize < 600 ? (
-            <img src={backButton} alt="back" />
+            <img onClick={() => navigate("/")} src={backButton} alt="back" />
           ) : (
             <button onClick={() => navigate("/")}>Back to products</button>
           )}
         </div>
         {screenSize < 600 ? (
           <div className={styles.buyBtn}>
-            <button onClick={handleBuyNow}>Buy Now</button>
+            <button onClick={handleAddToCart}>Buy Now</button>
           </div>
         ) : (
           ""
@@ -142,10 +174,28 @@ function ProductDetails() {
             </div>
             <div className={styles.buyBtn}>
               {" "}
-              <button>Add to cart</button>{" "}
+              <button
+                style={{ position: "relative" }}
+                disabled={adding}
+                onClick={handleAddToCart}
+              >
+                Add to cart
+                {adding ? (
+                  <div
+                    className={styles.box}
+                    style={{
+                      position: "absolute",
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  ></div>
+                ) : (
+                  ""
+                )}
+              </button>{" "}
             </div>
             <div className={styles.buyBtn}>
-              <button onClick={handleBuyNow}>Buy Now</button>
+              <button onClick={handleAddToCart}>Buy Now</button>
             </div>
           </div>
         </div>

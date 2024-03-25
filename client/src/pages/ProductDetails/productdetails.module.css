@@ -78,6 +78,26 @@
   width: 1rem;
   padding: 2px;
 }
+.box {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #d99c00;
+  top: 20%;
+  left: 45%;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media screen and (min-width: 600px) {
   .productHeader {
     font-family: Roboto Bold;

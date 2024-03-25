@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  margin-top: 10px;
+}
+.container > div {
+  /* border: 1px solid red; */
+  width: 20%;
+  padding: 20px 10px;
+}
+.container > div:first-child > img {
+  width: 90%;
+}
+.container > div:nth-child(2) > div:first-child {
+  font-family: Roboto Bold;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+.container > div:nth-child(2) > div:not(:first-child) {
+  font-family: Roboto Regular;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+.container > div:nth-child(3) {
+  font-family: Roboto Bold;
+  line-height: 1.2;
+  font-size: 0.85rem;
+}
+.container > div:nth-child(3) > div {
+  font-family: Roboto Regular;
+  line-height: 1.5;
+}
+.container > div:nth-child(4) {
+  font-family: Roboto Bold;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+.container > div:nth-child(4) > div:last-child {
+  margin-top: 5px;
+  width: 100%;
+  font-size: 0.85rem;
+}
+.container > div:nth-child(4) > div:last-child select {
+  /* border: 1px solid red; */
+  padding: 5px;
+  width: 100%;
+}
+.container > div:last-child {
+  font-family: Roboto Bold;
+  font-size: 0.85rem;
+}
+
+@media screen and (min-width: 992px) {
+  .container > div:first-child {
+    text-align: center;
+  }
+  .container > div:first-child > img {
+    width: 50%;
+  }
+  .container > div:nth-child(2) > div:first-child {
+    font-size: 1rem;
+  }
+  .container > div:nth-child(2) > div:not(:first-child) {
+    font-size: 0.9rem;
+    padding-top: 5px;
+  }
+  .container > div:nth-child(3) {
+    font-size: 1rem;
+  }
+  .container > div:nth-child(3) > div {
+    padding-top: 5px;
+    font-size: 0.9rem;
+  }
+  .container > div:nth-child(4) {
+    font-size: 1rem;
+  }
+  .container > div:nth-child(4) > div:last-child {
+    padding-top: 5px;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .container > div:nth-child(4) > div:last-child select {
+    padding: 5px;
+    width: 90%;
+    font-size: 0.9rem;
+  }
+  .container > div:last-child {
+    font-size: 1rem;
+  }
+  .container > div:last-child > div:last-child {
+    font-size: 0.9rem;
+    padding-top: 5px;
+  }
+}

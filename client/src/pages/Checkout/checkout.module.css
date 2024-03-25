@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  /* border: 5px solid green; */
+  padding: 10px 10px;
+  padding-bottom: 150px;
+  height: 100dvh;
+  overflow: auto;
+}
+.backBtnCont {
+  margin-top: 15px;
+}
+.backBtnCont img {
+  width: 50px;
+}
+.caption {
+  font-family: Roboto Bold;
+  font-size: 1.8rem;
+  margin-top: 10px;
+}
+.backBtnCont button {
+  background-color: #2e0052;
+  color: white;
+  font-family: Roboto Bold;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border: none;
+  line-height: 1.5;
+  cursor: pointer;
+}

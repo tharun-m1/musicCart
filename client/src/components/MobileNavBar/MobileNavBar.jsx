@@ -10,15 +10,17 @@ import { changeStatus } from "../../redux/loginSlice";
 function MobileNavBar() {
   const [navStatus, setNavStatus] = useState("home");
   const loginStatus = useSelector((state) => state.loginStatus.value);
+  const cartSize = useSelector((state) => state.cart.value.length);
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleAuth = () => {
     if (loginStatus) {
       localStorage.removeItem("mic_jwToken");
       dispatch(changeStatus(false));
-      return navigate("/");
+      navigate("/");
+      return window.location.reload();
     } else {
       return navigate("/auth");
     }
@@ -56,7 +58,7 @@ function MobileNavBar() {
           }`}
         >
           <img style={{ position: "relative" }} src={cart} alt="cart" />
-          <div className={styles.cartSize}>0</div>
+          <div className={styles.cartSize}>{cartSize}</div>
           <div>Cart</div>
         </div>
         <div onClick={handleAuth} className={styles.icon}>

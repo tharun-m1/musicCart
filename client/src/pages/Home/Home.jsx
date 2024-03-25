@@ -7,25 +7,33 @@ import logo from "../../assets/logo.svg";
 import cart2 from "../../assets/cart2.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFormStatus } from "../../redux/formStatus";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { changeStatus } from "../../redux/loginSlice";
 import useScreenSize from "../../customHooks/useScreenSize";
+
+import { updateCart } from "../../redux/cartSlice";
+import Loading from "../../components/Loading/Loading";
+// import { ToastContainer } from "react-toastify";
+import { getUser } from "../../api/user";
 // import Select from "react-select";
 function Home() {
   const loginStatus = useSelector((state) => state.loginStatus.value);
+  const cartSize = useSelector((state) => state.cart.value.length);
+  const location = useLocation();
   // eslint-disable-next-line
-  const [name, setName] = useState("Tharun");
+  const [name, setName] = useState("Tharun M");
   const [showMenuItms, setShowMenuItems] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const screenSize = useScreenSize();
   const getName = () => {
-    const arr = name.split(" ");
+    const arr = name?.split(" ");
     if (arr.length === 1) {
-      return arr[0][0].toUpperCase();
+      return arr[0][0]?.toUpperCase();
     }
     if (arr.length > 1) {
-      return arr[0][0].toUpperCase() + arr[1][0].toUpperCase();
+      return arr[0][0]?.toUpperCase() + arr[1][0]?.toUpperCase();
     }
   };
   const handleLogout = (e) => {
@@ -40,10 +48,35 @@ function Home() {
     } else {
       dispatch(changeStatus(true));
     }
-  });
+    // eslint-disable-next-line
+  }, []);
+  useEffect(() => {
+    async function getUserData() {
+      try {
+        setLoading(true);
+        const response = await getUser();
+        // const username = response.data.data.name;
+        // setName(getName(username));
+        dispatch(updateCart(response.data.data.cart));
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
+        localStorage.removeItem("mic_jwToken");
+        return window.location.reload();
+      }
+    }
+    const jwToken = localStorage.getItem("mic_jwToken");
+    if (jwToken) {
+      getUserData();
+    }
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
       <div className={styles.container}>
+        {loading ? <Loading /> : ""}
+        {/* <ToastContainer /> */}
         <div style={{ position: "sticky", top: "0" }} className={styles.header}>
           <div>
             <img src={phone} alt="phone number" />
@@ -107,7 +140,7 @@ function Home() {
             {loginStatus ? (
               <div onClick={() => navigate("cart")} className={styles.cartBtn}>
                 <img src={cart2} alt="cart" />
-                view cart {0}
+                view cart {location.pathname === "/cart" ? "" : cartSize}
               </div>
             ) : (
               ""
