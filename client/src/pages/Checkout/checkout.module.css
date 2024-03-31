@@ -3,12 +3,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .container {
   /* border: 5px solid green; */
+
   padding: 10px 10px;
   padding-bottom: 150px;
   height: 100dvh;
   overflow: auto;
+}
+.logo {
+  position: sticky;
+  top: 0;
+  background-color: #2e0052;
+  padding: 15px 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-family: Roboto Bold;
+  gap: 5px;
+  font-size: 1.1rem;
 }
 .backBtnCont {
   margin-top: 15px;
@@ -32,4 +46,320 @@
   border: none;
   line-height: 1.5;
   cursor: pointer;
+  width: 20%;
+  /* color: black; */
+}
+.address,
+.mode,
+.review {
+  /* border: 1px solid red; */
+  margin-top: 15px;
+}
+.address > div:first-child,
+.mode > div:first-child,
+.review > div:first-child {
+  font-family: Roboto Bold;
+  color: #b52b00;
+  font-size: 1rem;
+}
+.address > div:last-child,
+.mode > div:last-child,
+.review > div:first-child {
+  padding-bottom: 20px;
+}
+.address > div:last-child,
+.mode > div:last-child {
+  padding-left: 20px;
+  padding-top: 10px;
+  border-bottom: 2px solid #e1e1e1;
+}
+.address > div:last-child textarea {
+  padding: 10px 15px;
+  width: 90%;
+  border: none;
+  color: #797979;
+  font-size: 1rem;
+}
+.address > div:last-child textarea:focus {
+  outline: none;
+}
+.mode > div:last-child select {
+  all: unset;
+  font-family: Roboto Medium;
+  width: 70%;
+  padding: 10px 15px;
+  border: none;
+  color: #797979;
+}
+.itemImg {
+  /* border: 1px solid red; */
+  width: 90%;
+  margin: auto;
+  padding: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  gap: 20px;
+}
+.itemImg > div {
+  width: 23%;
+}
+.itemImg > div img {
+  width: 100%;
+  border: 1px solid #2e0052;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.details {
+  width: 90%;
+  margin: auto;
+}
+.details > div {
+  margin-top: 10px;
+}
+.details > div:first-child {
+  font-family: Roboto Bold;
+  font-size: 1.1rem;
+}
+.details > div:nth-child(2),
+.details > div:nth-child(3) {
+  font-family: Roboto Regular;
+
+  font-size: 0.9rem;
+}
+.details > div:nth-child(4) {
+  font-family: Roboto Regular;
+  font-size: 1rem;
+}
+.details > div:nth-child(5) {
+  font-family: Roboto Bold;
+  font-size: 1.2rem;
+}
+.items,
+.delivery {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto Regular;
+  color: #797979;
+}
+.total {
+  border-top: 2px solid #e1e1e1;
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto Bold;
+  color: #b52b00;
+  font-size: 1.2rem;
+  padding-top: 20px;
+}
+.orderBtnCont {
+  width: 100%;
+  margin: auto;
+  padding-top: 30px;
+  color: black;
+}
+.orderBtnCont button {
+  width: 100%;
+  background-color: #ffd600;
+  border-radius: 10px;
+  border: none;
+  font-family: Roboto Medium;
+  font-size: 1.1rem;
+  padding: 10px 0px;
+  cursor: pointer;
+  color: black;
+}
+.bottomBtnCont {
+  display: none;
+}
+@media screen and (min-width: 600px) {
+  .logo {
+    display: none;
+  }
+  .caption {
+    text-align: center;
+    text-decoration: underline;
+  }
+  .itemImg > div {
+    width: 20%;
+  }
+  .bottomBtnCont > div:first-child button {
+    /* width: 20%; */
+    font-size: 0.9rem;
+    margin-top: 0;
+    color: black;
+  }
+  .rightSection > div:first-child {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 95%;
+    margin: auto;
+  }
+  .left {
+    width: 65%;
+  }
+  .right {
+    width: 35%;
+  }
+  .wrapper {
+    /* border: 1px solid red; */
+    display: flex;
+    margin-top: 20px;
+    padding: 20px 0px;
+  }
+
+  .left > div {
+    /* border: 1px solid red; */
+    border-bottom: 2px solid #e1e1e1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .left > div:nth-child(3),
+  .left > div:nth-child(4) {
+    border: none;
+  }
+  .left {
+    padding-bottom: 20px;
+    /* border: 1px solid red; */
+    border-bottom: 2px solid #e1e1e1;
+  }
+
+  .address > div:last-child,
+  .mode > div:last-child {
+    border: none;
+  }
+  .left > div > div:first-child {
+    /* border: 1px solid red; */
+    width: 50%;
+    flex-shrink: 0;
+  }
+  .left > div > div:last-child {
+    /* border: 1px solid red; */
+    width: 50%;
+    padding-left: 0;
+  }
+  .details {
+    /* border: 1px solid blue; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px;
+    flex-grow: 0;
+  }
+  .details > div {
+    width: 50%;
+    align-self: flex-end;
+  }
+  .itemImg > div {
+    width: 25%;
+  }
+  .address > div:last-child textarea {
+    border: 2px solid #919191;
+    border-radius: 5px;
+  }
+  .mode > div:last-child select {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+  }
+
+  .right > div {
+    border: 2px solid #e1e1e1;
+    padding: 10px 10px;
+    width: 90%;
+    border-radius: 10px;
+    margin: auto;
+  }
+  .rightBtnCont {
+    /* border: 1px solid red; */
+    padding: 10px 0px;
+    border-bottom: 2px solid #e1e1e1;
+    font-family: Roboto Medium;
+  }
+  .rightBtnCont button {
+    width: 100%;
+    background-color: #ffd600;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    padding: 10px 0px;
+    cursor: pointer;
+    color: black;
+  }
+  .rightBtnCont > div {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .summary > div:first-child {
+    font-family: Roboto Bold;
+    font-size: 1.1rem;
+    padding: 10px 0px;
+  }
+  .items,
+  .delivery,
+  .total {
+    padding-top: 15px;
+  }
+  .delivery {
+    padding-bottom: 10px;
+  }
+  .total {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .bottomBtnCont {
+    border: 2px solid #e1e1e1;
+    width: 65%;
+    padding: 10px 10px;
+    font-family: Roboto Medium;
+    display: flex;
+    gap: 10px;
+    border-radius: 15px;
+  }
+  .bottomBtnCont > div:first-child {
+    /* border: 1px solid red; */
+    width: 30%;
+  }
+  .bottomBtnCont button {
+    width: 100%;
+    background-color: #ffd600;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    padding: 10px 0px;
+    cursor: pointer;
+  }
+  .rightSection {
+    /* border: 1px solid red; */
+    flex-grow: 1;
+  }
+  .rightSection > div:first-child {
+    color: #b52b00;
+    font-family: Roboto Bold;
+    font-size: 1rem;
+  }
+  .rightSection > div:last-child {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .left {
+    width: 70%;
+  }
+  .right {
+    width: 30%;
+  }
+  .bottomBtnCont {
+    width: 70%;
+  }
+  .bottomBtnCont > div:first-child {
+    width: 20%;
+  }
 }

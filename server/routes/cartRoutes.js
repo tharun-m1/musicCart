@@ -11,10 +11,8 @@ router.patch("/add-to-cart/:productId", isLoggedIn, async (req, res, next) => {
     const userId = req.userId;
     const { productId } = req.params;
     const { newQuantity } = req.body;
-
     const userData = await User.findOne({ _id: userId });
     const productData = await Product.findOne({ _id: productId });
-    // console.log(productData.productName);
     if (!productData) {
       return next(errorHandler(404, "Product doesn't exist"));
     }
@@ -26,7 +24,6 @@ router.patch("/add-to-cart/:productId", isLoggedIn, async (req, res, next) => {
       (prod) => prod.productId.toString() === productId.toString()
     );
     if (productIdx === -1) {
-      // console.log("hi");
       const newItem = {
         productId,
         quantity: 1,
@@ -36,7 +33,6 @@ router.patch("/add-to-cart/:productId", isLoggedIn, async (req, res, next) => {
         colour: productData.colour,
         availability: productData.availability,
       };
-      // console.log(newItem);
       userData.cart.push(newItem);
     } else {
       let prevQuant = userData.cart[productIdx].quantity;
@@ -79,6 +75,7 @@ router.delete("/delete-cart", isLoggedIn, async (req, res, next) => {
     return res.status(200).json({
       status: "OK",
       message: "cart deleted",
+      data: userData.cart,
     });
   } catch (err) {
     next(err);

@@ -1,16 +1,18 @@
 import axios from "axios";
 import { backendBaseUrl } from "../constants";
 
-export const getCart = async () => {
+export const addInvoice = async (payload) => {
   try {
     const jwToken = localStorage.getItem("mic_jwToken");
     const headers = {
       "Content-Type": "application/json",
       authorization: jwToken,
     };
-    const response = await axios.get(`${backendBaseUrl}/view-cart`, {
-      headers: headers,
-    });
+    const response = await axios.patch(
+      `${backendBaseUrl}/add-invoice`,
+      payload,
+      { headers: headers }
+    );
     return response;
   } catch (err) {
     if (err.response && err.response.status === 500) {
@@ -23,14 +25,14 @@ export const getCart = async () => {
   }
 };
 
-export const deleteCart = async () => {
+export const getInvoices = async () => {
   try {
     const jwToken = localStorage.getItem("mic_jwToken");
     const headers = {
       "Content-Type": "application/json",
       authorization: jwToken,
     };
-    const response = await axios.delete(`${backendBaseUrl}/delete-cart`, {
+    const response = await axios.get(`${backendBaseUrl}/invoices`, {
       headers: headers,
     });
     return response;

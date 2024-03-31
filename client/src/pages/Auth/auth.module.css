@@ -112,6 +112,7 @@
   border: 2px solid #bdbdbd;
   cursor: pointer;
   font-family: Roboto Medium;
+  color: black;
 }
 @media screen and (min-width: 600px) {
   .logo {

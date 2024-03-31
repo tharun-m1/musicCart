@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const cartSchema = require("./cartSchema");
+const invoiceSchema = require("./invoiceSchema");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -20,6 +21,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   cart: [cartSchema],
+  invoices: [invoiceSchema],
 });
 
 const User = new mongoose.model("User", userSchema);

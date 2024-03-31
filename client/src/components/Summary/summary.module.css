@@ -45,9 +45,13 @@
   font-size: 0.85rem;
 }
 .container > div:nth-child(4) > div:last-child select {
-  /* border: 1px solid red; */
+  border: 1px solid #bebebe;
+  border-radius: 5px;
   padding: 5px;
   width: 100%;
+}
+.container > div:nth-child(4) > div:last-child select:focus {
+  outline: none;
 }
 .container > div:last-child {
   font-family: Roboto Bold;

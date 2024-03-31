@@ -59,7 +59,8 @@ function ProductDetails() {
         }
       } catch (err) {
         setLoading(false);
-        return toast.error(err.message);
+        toast.error(err.message);
+        return navigate("/");
       }
     }
     getData();

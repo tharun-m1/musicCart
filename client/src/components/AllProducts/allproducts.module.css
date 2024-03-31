@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  /* border: 2px solid red; */
+  /* height: 100dvh; */
+  padding-bottom: 100px;
+}
+.bannerCont {
+  /* border: 1px solid red; */
+  padding: 10px 0px;
+  margin-top: 40px;
+}
+.banner {
+  background: linear-gradient(90deg, #7286b4 0%, #e794ce 100%);
+  width: 95%;
+  margin: auto;
+  display: flex;
+  border-radius: 10px;
+}
+.left {
+  /* border: 1px solid red; */
+  padding: 10px;
+  padding-bottom: 20px;
+  width: 70%;
+}
+.left > div:first-child {
+  font-family: Roboto Bold;
+  font-size: 1.2rem;
+}
+.left > div:last-child {
+  background-color: #2e0052;
+  text-align: center;
+  color: white;
+  font-family: Roboto Regular;
+  font-size: 1rem;
+  padding: 8px 12px;
+  width: 50%;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+.right {
+  /* border: 1px solid red; */
+  width: 40%;
+  position: relative;
+}
+
+.right img {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 8px;
+  width: 100%;
+  height: 109%;
+  object-fit: contain;
+}
+.searchCont {
+  display: none;
+}
+.filtersCont {
+  border-bottom: 1.5px solid#BBBABA;
+  padding: 10px 10px;
+  padding-bottom: 25px;
+  display: flex;
+  /* overflow: auto; */
+  /* gap: 15px; */
+  margin-top: 20px;
+}
+
+.filters {
+  overflow-x: auto;
+  flex: 80%;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.filtersCont select {
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-family: Roboto Regular;
+  font-size: 1rem;
+  border: 1.5px solid #d9d9d9;
+}
+.filtersCont select:focus {
+  outline: none;
+}
+.filtersCont select:not(.sortby) {
+  background-color: #d9d9d9;
+}
+.filtersCont select option {
+  font-family: Roboto Regular;
+  background-color: white;
+}
+.views {
+  display: none;
+}
+.productsCont {
+  /* border: 1px solid red; */
+  width: 95%;
+  margin: auto;
+  margin-top: 30px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  /* padding-bottom: 100px; */
+}
+
+@media screen and (min-width: 600px) {
+  .banner {
+    justify-content: space-between;
+  }
+  .left {
+    width: 50%;
+    padding: 25px 10px;
+  }
+  .left > div:first-child {
+    font-size: 1.5rem;
+  }
+  .left > div:last-child {
+    display: none;
+  }
+  .right {
+    width: 30%;
+  }
+  .searchCont {
+    /* border: 1px solid red; */
+    display: flex;
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .searchCont > div {
+    border: 2px solid #c8c8c8;
+  }
+  .searchCont img {
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+  }
+  .searchCont > div:first-child {
+    border-right: none;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  .searchCont > div:last-child {
+    flex-grow: 1;
+    border-left: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  .searchCont input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 10px 15px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-size: 1.1rem;
+    color: #666666;
+  }
+  .searchCont input:focus {
+    outline: none;
+  }
+  .filtersCont {
+    /* border: 1px solid red; */
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    border-bottom: none;
+  }
+  .sortby {
+    order: 5;
+    margin-left: auto;
+  }
+  .views {
+    display: flex;
+    align-items: center;
+    flex: 12%;
+    gap: 10px;
+  }
+  /* .views > div {
+    border: 1px solid red;
+  } */
+  .views > div img {
+    width: 90%;
+  }
+  .productsCont {
+    gap: 40px;
+  }
+  /* feedback btn */
+}
+@media screen and (min-width: 768px) {
+  .left {
+    padding: 30px 25px;
+  }
+  .left > div:first-child {
+    font-size: 1.8rem;
+  }
+  .right {
+    width: 20%;
+  }
+  .views {
+    flex: 8%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .left {
+    padding: 40px 25px;
+  }
+  .left > div:first-child {
+    font-size: 1.9rem;
+  }
+  .views {
+    flex: 3%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .left {
+    padding: 55px 25px;
+  }
+  .left > div:first-child {
+    font-size: 1.9rem;
+  }
+  .views {
+    flex: 1%;
+  }
+}

@@ -71,3 +71,31 @@ export const addToCart = async (quantity, productId) => {
 };
 
 // =========================================================================
+
+// ============================== get all products =========================
+
+export const getProducts = async (filters) => {
+  try {
+    const response = axios.get(`${backendBaseUrl}/products/filter`, {
+      params: filters,
+    });
+    return response;
+  } catch (err) {
+    throw new Error("Something went Wrong.");
+  }
+};
+
+// =========================================================================
+
+export const searchProducts = async (name) => {
+  try {
+    const response = axios.get(`${backendBaseUrl}/products/search`, {
+      params: {
+        name,
+      },
+    });
+    return response;
+  } catch (err) {
+    throw new Error("Something went wrong!");
+  }
+};

@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeFormStatus } from "../../redux/formStatus";
 
 function Auth() {
-  // eslint-disable-next-line
-  // const [formStatus, setFormStatus] = useState("login");
   const formStatus = useSelector((state) => state.formStatus.value);
   const dispatch = useDispatch();
   return (

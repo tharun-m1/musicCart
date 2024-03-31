@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import styles from "./summary.module.css";
 import { addToCart } from "../../api/products";
-
-import Loading from "../Loading/Loading";
+import { getUser } from "../../api/user";
+import { useDispatch } from "react-redux";
+import { updateCart } from "../../redux/cartSlice";
 function Summary({ data }) {
   const [quant, setQuant] = useState(data?.quantity);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const handleQuantityChange = async (e) => {
     try {
       const quantity = e.target.value;
       setLoading(true);
       const productId = data?.productId;
       await addToCart(quantity, productId);
+      const res = await getUser();
+      dispatch(updateCart(res.data.data.cart));
       setQuant(quantity);
       setLoading(false);
-      return window.location.reload();
     } catch (err) {
       setLoading(false);
       if (err.status >= 500) {
@@ -25,7 +28,7 @@ function Summary({ data }) {
   };
   return (
     <>
-      {loading ? <Loading /> : ""}
+      {/* {loading ? <Loading /> : ""} */}
 
       <div className={styles.container}>
         <div>
@@ -48,7 +51,15 @@ function Summary({ data }) {
             <strong>Quantity</strong>
           </div>
           <div>
-            <select onChange={handleQuantityChange} value={quant} name="quant">
+            <select
+              style={{
+                cursor: "pointer",
+                border: loading ? "3px solid #FFD800" : "",
+              }}
+              onChange={handleQuantityChange}
+              value={quant}
+              name="quant"
+            >
               <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
