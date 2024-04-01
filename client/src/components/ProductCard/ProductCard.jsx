@@ -29,7 +29,7 @@ function ProductCard({ data, view }) {
     } catch (err) {
       setAdding(false);
       // console.log("status code", err);
-      if (err.status === 500) {
+      if (err.status >= 500) {
         //   console.log("500 executed");
         localStorage.removeItem("mic_jwToken");
         return navigate("/auth");
@@ -37,7 +37,7 @@ function ProductCard({ data, view }) {
       if (err.status === 412) {
         return toast.error(err.message);
       }
-      return toast.error("Something went wrong try again.");
+      // return toast.error("Something went wrong try again.");
     }
   };
   return (
