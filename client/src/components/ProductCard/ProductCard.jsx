@@ -32,12 +32,14 @@ function ProductCard({ data, view }) {
       if (err.status >= 500) {
         //   console.log("500 executed");
         localStorage.removeItem("mic_jwToken");
-        return navigate("/auth");
+        navigate("/auth");
       }
       if (err.status === 412) {
         return toast.error(err.message);
       }
-      // return toast.error("Something went wrong try again.");
+      // console.log("token removed");
+      localStorage.removeItem("mic_jwToken");
+      return navigate("/auth");
     }
   };
   return (
