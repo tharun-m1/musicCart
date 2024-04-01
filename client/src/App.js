@@ -7,11 +7,13 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Checkout from "./pages/Checkout/Checkout";
 import Success from "./components/Success/Success";
 import Invoice from "./pages/Invoice/Invoice";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<Home />}>
           <Route path="/" element={<AllProducts />} />
           <Route path="cart" element={<Cart />} />
@@ -20,7 +22,7 @@ function App() {
           <Route path="success" element={<Success />} />
           <Route path="invoices" element={<Invoice />} />
         </Route>
-        <Route path="/auth" element={<Auth />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
