@@ -5,9 +5,9 @@ import cartBtn from "../../assets/cartBtn.svg";
 import { addToCart } from "../../api/products";
 import { useDispatch } from "react-redux";
 import { updateCart } from "../../redux/cartSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import useScreenSize from "../../customHooks/useScreenSize";
-
+import "react-toastify/dist/ReactToastify.css";
 function ProductCard({ data, view }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,6 +42,7 @@ function ProductCard({ data, view }) {
       return navigate("/auth");
     }
   };
+
   return (
     <>
       <div
@@ -51,7 +52,6 @@ function ProductCard({ data, view }) {
           view === "grid" ? styles.container : styles.containerList
         }`}
       >
-        <ToastContainer />
         <div
           className={`${
             view === "grid" ? styles.imageSection : styles.imageSectionList
